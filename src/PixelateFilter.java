@@ -8,8 +8,8 @@ public class PixelateFilter implements PixelFilter {
         int lastColIndex = img[0].length - 1;
         for (int r = 1; r < img.length; r += 3) {
             for (int c = 1; c < img[0].length; c += 3) {
-                for (int i = r - 1; i < 3; i++) {
-                    for (int j = c - 1; j < 3; j++) {
+                for (int i = r - 1; i < r + 2; i++) {
+                    for (int j = c - 1; j < c + 2; j++) {
                         img[i][j] = img[r][c];
                     }
                 }

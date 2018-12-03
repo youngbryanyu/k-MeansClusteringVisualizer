@@ -1,10 +1,10 @@
 import javax.swing.*;
 
-public class ColorThr implements PixelFilter {
+public class ColorThreshold implements PixelFilter {
 
     int r, g, b, dist;
 
-    public ColorThr() {
+    public ColorThreshold() {
         r = Integer.parseInt(JOptionPane.showInputDialog("Enter your target red values"));
         g = Integer.parseInt(JOptionPane.showInputDialog("Enter your target green values"));
         b = Integer.parseInt(JOptionPane.showInputDialog("Enter your target blue values"));

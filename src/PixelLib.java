@@ -272,7 +272,6 @@ public class PixelLib {
         // no return necessary because we just changed the values in arr
     }
 
-
     public static void fill1dArray(short[][] vals, int[] arr) {
         if (arr.length != vals.length * vals[0].length) {
             System.err.println("in fill1dArray: different number of elements in 2d and 1d arrays");
@@ -287,7 +286,6 @@ public class PixelLib {
 
         // no return necessary because we just changed the values in arr
     }
-
 
     public static void fill1dArray(short[] vals, int[] arr) {
         for (int i = 0; i < vals.length; i++) {

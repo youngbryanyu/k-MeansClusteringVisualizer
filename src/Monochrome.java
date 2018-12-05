@@ -1,19 +1,18 @@
 import javax.swing.*;
 
-public class Polychrome implements PixelFilter {
+public class Monochrome implements PixelFilter{
     int response;
-    int intervalSize;
-
-    public Polychrome() {
+    public Monochrome(){
         response = Integer.parseInt(JOptionPane.showInputDialog("Enter a threshold"));
-        intervalSize = 255 / response;
     }
-
     public int[] filter(int[] pixels, int width, int height) {
         short[] bwpixels = PixelLib.convertToShortGreyscale(pixels);
 
         for (int i = 0; i < bwpixels.length; i++) {
-            bwpixels[i] = (short) ((bwpixels[i] / intervalSize) * intervalSize - intervalSize / 2);
+            if(bwpixels[i] > response)
+                bwpixels[i] = 255;
+            else
+                bwpixels[i] = 0;
         }
 
         PixelLib.fill1dArray(bwpixels, pixels);

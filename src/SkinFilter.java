@@ -8,9 +8,8 @@ public class SkinFilter implements PixelFilter {
 
     private int kernelWeight;
 
-    // red: 186, green: 108, blue: 75
-    private short red = 60;
-    private short green = 70;
+    private short red = 186;
+    private short green = 108;
     private short blue = 75;
 
     private double THRESHOLD = 80;
@@ -106,6 +105,10 @@ public class SkinFilter implements PixelFilter {
         return pixels;
     }
 
+    private void colorImage(Cluster c) {
+
+    }
+
     private ArrayList<Cluster> addOneCluster(ArrayList<Cluster> clusters) {
         int randomRow = (int) (Math.random() * out2.length);
         int randomCol = (int) (Math.random() * out2[0].length);
@@ -140,17 +143,27 @@ public class SkinFilter implements PixelFilter {
 
     private double getStandardDev(Cluster c) {
         int numPoints = c.getPoints().size();
+        double mean = getMean(c);
+        double sd = getSD(c, mean);
+        return Math.sqrt(sd / (numPoints - 1));
+    }
+
+    private double getMean(Cluster c) {
+        int numPoints = c.getPoints().size();
         double mean = 0;
         for (Point p : c.getPoints()) {
             mean += distance(p, c);
         }
         mean /= numPoints;
+        return mean;
+    }
 
+    private double getSD(Cluster c, double mean) {
         double sd = 0;
         for (Point p : c.getPoints()) {
             sd += (distance(p, c) - mean) * (distance(p, c) - mean);
         }
-        return Math.sqrt(sd / (numPoints - 1));
+        return sd;
     }
 
     private boolean isUnchanged(ArrayList<Cluster> clusters, ArrayList<Point> oldCenters) {
@@ -182,7 +195,6 @@ public class SkinFilter implements PixelFilter {
             int randomCol = (int) (Math.random() * out2[0].length);
             Point p = new Point(randomRow, randomCol);
             Cluster c = new Cluster(p);
-
             clusters.add(c);
         }
     }

@@ -24,6 +24,7 @@ The main class can be run from FilterView.java class. When program runs, click t
 
 ## Built With
 
+* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) - language
 * [Processing](https://processing.org/) - graphics
 * [gluegen](https://jogamp.org/gluegen/www/) - interface and C libraries 
 * [gstreamer](https://gstreamer.freedesktop.org/) - media processing

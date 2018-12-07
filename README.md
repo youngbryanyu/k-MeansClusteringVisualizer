@@ -26,25 +26,22 @@ The main class can be run from FilterView.java class. When program runs, click t
 ## Built With
 
 * [Processing](https://processing.org/) - graphics
-* [gluegen] (https://jogamp.org/gluegen/www/) - interface and C libraries 
-* [gstreamer] (https://gstreamer.freedesktop.org/) - media processing
-* [jna] (https://github.com/java-native-access/jna) - java native access
-* [jogl] (http://jogamp.org/jogl/www/) - wrapper library
-* [video] (https://processing.org/reference/libraries/video/index.html) - video capturing
+* [gluegen](https://jogamp.org/gluegen/www/) - interface and C libraries 
+* [gstreamer](https://gstreamer.freedesktop.org/) - media processing
+* [jna](https://github.com/java-native-access/jna) - java native access
+* [jogl](http://jogamp.org/jogl/www/) - wrapper library
+* [video](https://processing.org/reference/libraries/video/index.html) - video capturing
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+This project is currently open source are free for anyone to contribute. Simply create a new branch, make a pull request, and I will verify whether or not the edits are valid.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Young Yu** - *Initial work* - [yyu2002](https://github.com/yyu2002)
+* **David Dobervich** - *Framework* - [ddobervich](http://github.com/ddobervich)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/yyu2002/VideoImageClustering/contributors) who participated in this project.
 
 ## License
 
@@ -53,5 +50,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Hat tip to anyone whose code was used
-* Inspiration
-* etc

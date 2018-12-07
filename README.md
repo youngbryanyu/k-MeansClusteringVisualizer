@@ -1,23 +1,18 @@
-# VideoImageClustering
+UNFINISHED README
+# Video Image Clustering
 Clusters/groups objects in an image or live video using K-means clustering. The different clusters are displayed with randomly initialized different colors. Currently implemented to detect human skin surfaces and automatically determine the number of unique clusters present.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
-What things you need to install the software and how to install them
+.dll files are incompatible with Mac OSX.
 
-```
-Give examples
-```
+All of the libraries required to run the program are included in the lib folder. Go to (File > Project Structure > Libraries > +) and configure all the .jar files. Make sure that the jdk is 64 bit and the project language level is at 8. 
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Runnable on any IDE (I prefer IntelliJ or Eclipse.
 
 ```
 Give the example

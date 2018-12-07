@@ -1,4 +1,3 @@
-UNFINISHED README
 # Video Image Clustering
 Clusters/groups objects in an image or live video using K-means clustering. The different clusters are displayed with randomly initialized different colors. Currently implemented to detect human skin surfaces and automatically determine the number of unique clusters present. Only objects of the target color with be displayed and clustered while everything else will be blacked out (Currently detects light skin color objects). 
 

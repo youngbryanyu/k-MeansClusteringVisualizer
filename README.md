@@ -21,13 +21,16 @@ Runnable on any IDE (I prefer IntelliJ for easy setup and cloning).
 
 ## Running the tests
 
-Main class can be run from FilterView.java class. When program runs, click the window and press the lower case 'f' key. A window will pop up prompting for the name of the filter to run and type in 'SkinFilter' and press enter. Next a window will pop up where the left panel displays what the live camera captures and the right panel displays the clusters of objects. Only objects of the target color with be displayed and clustered while everything else will be blacked out. 
+The main class can be run from FilterView.java class. When program runs, click the window and press the lower case 'f' key. A window will pop up prompting for the name of the filter to run and type in 'SkinFilter' and press enter. Next a window will pop up where the left panel displays what the live camera captures and the right panel displays the clusters of objects. Only objects of the target color with be displayed and clustered while everything else will be blacked out. 
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Processing](https://processing.org/) - graphics
+* [gluegen] (https://jogamp.org/gluegen/www/)
+* [gstreamer] (https://gstreamer.freedesktop.org/) 
+* [jna] (https://github.com/java-native-access/jna)
+* [jogl] (http://jogamp.org/jogl/www/)
+* [video] (https://processing.org/reference/libraries/video/index.html)
 
 ## Contributing
 

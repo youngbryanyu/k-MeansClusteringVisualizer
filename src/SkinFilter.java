@@ -28,15 +28,7 @@ public class SkinFilter implements PixelFilter {
     private boolean firstLoop = true;
 
     public SkinFilter() {
-        reds = new short[maxClusters];
-        greens = new short[maxClusters];
-        blues = new short[maxClusters];
-
-        for (int i = 0; i < maxClusters; i++) {
-            reds[i] = (short) (Math.random() * 256);
-            greens[i] = (short) (Math.random() * 256);
-            blues[i] = (short) (Math.random() * 256);
-        }
+        initializeColors();
     }
 
     @Override
@@ -83,14 +75,14 @@ public class SkinFilter implements PixelFilter {
 
         firstLoop = false;
 
-        for (int r = 0; r < 480; r++) {
-            for (int c = 0; c < 640; c++) {
-                img.red[r][c] = 0;
-                img.green[r][c] = 0;
-                img.blue[r][c] = 0;
-            }
-        }
+        img = blacken(img);
+        img = colorImage(img);
 
+        pixels = PixelLib.combineColorComponents(img);
+        return pixels;
+    }
+
+    private PixelLib.ColorComponents2d colorImage(PixelLib.ColorComponents2d img) {
         for (Cluster cluster : clusters) {
             for (Point p : cluster.getPoints()) {
                 int r = (int) p.getX();
@@ -100,13 +92,29 @@ public class SkinFilter implements PixelFilter {
                 img.blue[r][c] = blues[clusters.indexOf(cluster)];
             }
         }
-
-        pixels = PixelLib.combineColorComponents(img);
-        return pixels;
+        return img;
     }
 
-    private void colorImage(Cluster c) {
+    private void initializeClusters(int numClusters) {
+        for (int i = 0; i < numClusters; i++) {
+            int randomRow = (int) (Math.random() * out2.length);
+            int randomCol = (int) (Math.random() * out2[0].length);
+            Point p = new Point(randomRow, randomCol);
+            Cluster c = new Cluster(p);
+            clusters.add(c);
+        }
+    }
 
+    private void initializeColors() {
+        reds = new short[maxClusters];
+        greens = new short[maxClusters];
+        blues = new short[maxClusters];
+
+        for (int i = 0; i < maxClusters; i++) {
+            reds[i] = (short) (Math.random() * 256);
+            greens[i] = (short) (Math.random() * 256);
+            blues[i] = (short) (Math.random() * 256);
+        }
     }
 
     private ArrayList<Cluster> addOneCluster(ArrayList<Cluster> clusters) {
@@ -114,7 +122,6 @@ public class SkinFilter implements PixelFilter {
         int randomCol = (int) (Math.random() * out2[0].length);
         Point p = new Point(randomRow, randomCol);
         Cluster c = new Cluster(p);
-
         clusters.add(c);
         return clusters;
     }
@@ -129,14 +136,11 @@ public class SkinFilter implements PixelFilter {
 
     private boolean isBadCluster(Cluster c) {
         double sd = getStandardDev(c);
-
         int numBadPoints = 0;
-
         for (Point p : c.getPoints()) {
             if (distance(p, c) > NUM_SDS * sd)
                 numBadPoints++;
         }
-
         double average = (double) (numBadPoints) / c.getPoints().size();
         return average > BAD_THRESHOLD;
     }
@@ -144,8 +148,16 @@ public class SkinFilter implements PixelFilter {
     private double getStandardDev(Cluster c) {
         int numPoints = c.getPoints().size();
         double mean = getMean(c);
-        double sd = getSD(c, mean);
+        double sd = getStandardDev(c, mean);
         return Math.sqrt(sd / (numPoints - 1));
+    }
+
+    private double getStandardDev(Cluster c, double mean) {
+        double sd = 0;
+        for (Point p : c.getPoints()) {
+            sd += (distance(p, c) - mean) * (distance(p, c) - mean);
+        }
+        return sd;
     }
 
     private double getMean(Cluster c) {
@@ -156,14 +168,6 @@ public class SkinFilter implements PixelFilter {
         }
         mean /= numPoints;
         return mean;
-    }
-
-    private double getSD(Cluster c, double mean) {
-        double sd = 0;
-        for (Point p : c.getPoints()) {
-            sd += (distance(p, c) - mean) * (distance(p, c) - mean);
-        }
-        return sd;
     }
 
     private boolean isUnchanged(ArrayList<Cluster> clusters, ArrayList<Point> oldCenters) {
@@ -189,16 +193,6 @@ public class SkinFilter implements PixelFilter {
         return Math.sqrt(dx * dx + dy * dy);
     }
 
-    private void initializeClusters(int numClusters) {
-        for (int i = 0; i < numClusters; i++) {
-            int randomRow = (int) (Math.random() * out2.length);
-            int randomCol = (int) (Math.random() * out2[0].length);
-            Point p = new Point(randomRow, randomCol);
-            Cluster c = new Cluster(p);
-            clusters.add(c);
-        }
-    }
-
     private ArrayList<Point> getAllPoints(short[][] out2) {
         ArrayList<Point> points = new ArrayList<>();
         for (int r = 0; r < out2.length; r++) {
@@ -212,17 +206,15 @@ public class SkinFilter implements PixelFilter {
         return points;
     }
 
-    private void performSecondThreshold(short[][] out2) {
-        for (int r = 0; r < out2.length; r++) {
-            for (int c = 0; c < out2[0].length; c++) {
-                int dist = out2[r][c];
-                if (dist > THRESHOLD2) {
-                    out2[r][c] = 255;
-                } else {
-                    out2[r][c] = 0;
-                }
+    private PixelLib.ColorComponents2d blacken(PixelLib.ColorComponents2d img) {
+        for (int r = 0; r < 480; r++) {
+            for (int c = 0; c < 640; c++) {
+                img.red[r][c] = 0;
+                img.green[r][c] = 0;
+                img.blue[r][c] = 0;
             }
         }
+        return img;
     }
 
     private int sumOf(short[][] kernal) {
@@ -265,6 +257,19 @@ public class SkinFilter implements PixelFilter {
                     out[r][c] = 0;
                 } else {
                     out[r][c] = 255;
+                }
+            }
+        }
+    }
+
+    private void performSecondThreshold(short[][] out2) {
+        for (int r = 0; r < out2.length; r++) {
+            for (int c = 0; c < out2[0].length; c++) {
+                int dist = out2[r][c];
+                if (dist > THRESHOLD2) {
+                    out2[r][c] = 255;
+                } else {
+                    out2[r][c] = 0;
                 }
             }
         }

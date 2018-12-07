@@ -84,10 +84,18 @@ public class SkinFilter implements PixelFilter {
 
         firstLoop = false;
 
+        for (int r = 0; r < 480; r++) {
+            for (int c = 0; c < 640; c++) {
+                img.red[r][c] = 0;
+                img.green[r][c] = 0;
+                img.blue[r][c] = 0;
+            }
+        }
+
         for (Cluster cluster : clusters) {
             for (Point p : cluster.getPoints()) {
-                int r = (int) p.getY();
-                int c = (int) p.getX();
+                int r = (int) p.getX();
+                int c = (int) p.getY();
                 img.red[r][c] = reds[clusters.indexOf(cluster)];
                 img.green[r][c] = greens[clusters.indexOf(cluster)];
                 img.blue[r][c] = blues[clusters.indexOf(cluster)];

@@ -37,8 +37,8 @@ This project is currently open source are free for anyone to contribute. Simply 
 
 ## Authors
 
-* **Young Yu** - *Initial work* - [yyu2002](https://github.com/yyu2002)
-* **David Dobervich** - *Framework* - [ddobervich](http://github.com/ddobervich)
+* **David Dobervich** - *Framework and UI* - [ddobervich](http://github.com/ddobervich)
+* **Young Yu** - *Clustering implementation* - [yyu2002](https://github.com/yyu2002)
 
 See also the list of [contributors](https://github.com/yyu2002/VideoImageClustering/contributors) who participated in this project.
 

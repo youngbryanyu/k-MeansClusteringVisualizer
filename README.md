@@ -26,11 +26,11 @@ The main class can be run from FilterView.java class. When program runs, click t
 ## Built With
 
 * [Processing](https://processing.org/) - graphics
-* [gluegen] (https://jogamp.org/gluegen/www/)
-* [gstreamer] (https://gstreamer.freedesktop.org/) 
-* [jna] (https://github.com/java-native-access/jna)
-* [jogl] (http://jogamp.org/jogl/www/)
-* [video] (https://processing.org/reference/libraries/video/index.html)
+* [gluegen] (https://jogamp.org/gluegen/www/) - interface and C libraries 
+* [gstreamer] (https://gstreamer.freedesktop.org/) - media processing
+* [jna] (https://github.com/java-native-access/jna) - java native access
+* [jogl] (http://jogamp.org/jogl/www/) - wrapper library
+* [video] (https://processing.org/reference/libraries/video/index.html) - video capturing
 
 ## Contributing
 

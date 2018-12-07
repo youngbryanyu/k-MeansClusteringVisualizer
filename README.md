@@ -1,6 +1,7 @@
 UNFINISHED README
 # Video Image Clustering
-Clusters/groups objects in an image or live video using K-means clustering. The different clusters are displayed with randomly initialized different colors. Currently implemented to detect human skin surfaces and automatically determine the number of unique clusters present.
+Clusters/groups objects in an image or live video using K-means clustering. The different clusters are displayed with randomly initialized different colors. Currently implemented to detect human skin surfaces and automatically determine the number of unique clusters present. Only objects of the target color with be displayed and clustered while everything else will be blacked out (Currently detects light skin color objects). 
+
 
 ## Getting Started
 
@@ -18,31 +19,9 @@ Runnable on any IDE (I prefer IntelliJ for easy setup and cloning).
  $ git clone https://github.com/yyu2002/VideoImageClustering.git
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+Main class can be run from FilterView.java class. When program runs, click the window and press the lower case 'f' key. A window will pop up prompting for the name of the filter to run and type in 'SkinFilter' and press enter. Next a window will pop up where the left panel displays what the live camera captures and the right panel displays the clusters of objects. Only objects of the target color with be displayed and clustered while everything else will be blacked out. 
 
 ## Built With
 

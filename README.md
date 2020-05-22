@@ -40,8 +40,6 @@ This project is currently open source are free for anyone to contribute. Simply 
 
 * **Young Yu** - *Clustering implementation, Framework, and UI* - [yyu2002](https://github.com/yyu2002)
 
-See also the list of [contributors](https://github.com/yyu2002/VideoImageClustering/contributors) who participated in this project.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

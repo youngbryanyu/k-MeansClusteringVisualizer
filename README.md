@@ -1,5 +1,5 @@
 # k-Means Clustering Visualizer
-Visualizer for clustering objects in live video using K-means clustering. The different clusters are displayed with randomly initialized colors. Automatically determines the number of unique clusters present. Only objects close to the target color will be displayed and clustered while everything else will be blacked out (Currently set to detect light skin color objects). (SkinFilter.java class)
+Visualizer for color-based image segmentation in live-video using K-means clustering. Number of unique clusters is either automatically determined by program or can be set to a custom value. Applies thresholding to pixels in image/video before clustering. The k clusters are highlighted with randomly initialized colors. (SkinFilter.java class)
 
 
 ## Getting Started

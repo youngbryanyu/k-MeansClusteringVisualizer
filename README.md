@@ -15,7 +15,7 @@ All of the libraries required to run the program are included in the lib folder.
 Runnable on any IDE (I prefer IntelliJ for easy setup and cloning).
 
 ```
- $ git clone https://github.com/yyu2002/VideoImageClustering.git
+ $ git clone https://github.com/youngbryanyu/VideoImageClustering.git
 ```
 
 ## Running the tests
@@ -38,7 +38,7 @@ This project is currently open source are free for anyone to contribute. Simply 
 
 ## Authors
 
-* **Young Yu** - *Clustering implementation, Framework, and UI* - [yyu2002](https://github.com/yyu2002)
+* **Young Yu** - *Clustering implementation, Framework, and UI* - [youngbryanyu](https://github.com/youngbryanyu)
 
 ## License
 
